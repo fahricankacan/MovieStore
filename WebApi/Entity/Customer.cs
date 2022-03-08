@@ -11,7 +11,7 @@ namespace WebApi.Entity
         public string Name  { get; set; }
         public string Surname { get; set; }
 
-        public ICollection<MovieCustomer> MovieCustomers { get; set; }
+        //public ICollection<MovieCustomer> MovieCustomers { get; set; }
         public ICollection<MovieType> FavoriteTypes { get; set; }
         public ICollection<OperationHistory> OperationHistories { get; set; }
     }

@@ -11,8 +11,11 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using WebApi.DbOperations;
+using WebApi.Middlewares;
+using WebApi.Services;
 
 namespace WebApi
 {
@@ -38,11 +41,12 @@ namespace WebApi
             services.AddDbContext<MovieStoreDbContext>(
                 options => options.UseInMemoryDatabase(databaseName: "MovieStoreDb"));
 
-            
-                
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
 
             #region Services
             services.AddScoped<IMovieStoreDbContext>(proivider => proivider.GetService<MovieStoreDbContext>());
+            services.AddSingleton<ILoggerService, ConsoleLogger>();
             #endregion
         }
 
@@ -60,6 +64,7 @@ namespace WebApi
 
             app.UseRouting();
 
+            app.UseCustomExceptionMiddle();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

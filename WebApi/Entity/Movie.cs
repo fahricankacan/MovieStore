@@ -15,14 +15,14 @@ namespace WebApi.Entity
         public decimal Price { get; set; }
 
 
-        public int TypeId { get; set; }
-        public MovieType Type { get; set; }
+        public int MovieTypeId { get; set; }
+        public MovieType MovieType { get; set; }
 
         public int DirectorId { get; set; }
         public Director Director { get; set; }
 
         public ICollection<MovieActor> MovieActors { get; set; }
-        public ICollection<MovieCustomer> MovieCustomers { get; set; }
+      
 
         public bool IsActive { get; set; } = true;
     }

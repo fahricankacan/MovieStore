@@ -23,16 +23,16 @@ namespace WebApi.DbOperations
                 .WithMany(c => c.MovieActors)
                 .HasForeignKey(bc => bc.ActorId);
 
-            modelBuilder.Entity<MovieCustomer>()
-     .HasKey(bc => new { bc.MovieId, bc.CustomerId });
-            modelBuilder.Entity<MovieCustomer>()
-                .HasOne(bc => bc.Movie)
-                .WithMany(b => b.MovieCustomers)
-                .HasForeignKey(bc => bc.MovieId);
-            modelBuilder.Entity<MovieCustomer>()
-                .HasOne(bc => bc.Customer)
-                .WithMany(c => c.MovieCustomers)
-                .HasForeignKey(bc => bc.CustomerId);
+     //       modelBuilder.Entity<MovieCustomer>()
+     //.HasKey(bc => new { bc.MovieId, bc.CustomerId });
+     //       modelBuilder.Entity<MovieCustomer>()
+     //           .HasOne(bc => bc.Movie)
+     //           .WithMany(b => b.MovieCustomers)
+     //           .HasForeignKey(bc => bc.MovieId);
+     //       modelBuilder.Entity<MovieCustomer>()
+     //           .HasOne(bc => bc.Customer)
+     //           .WithMany(c => c.MovieCustomers)
+     //           .HasForeignKey(bc => bc.CustomerId);
         }
 
         public MovieStoreDbContext(DbContextOptions<MovieStoreDbContext> options):base(options){}
@@ -46,7 +46,9 @@ namespace WebApi.DbOperations
         public DbSet<MovieType> MovieTypes { get; set; }
         public DbSet<OperationHistory> OperationHistories { get; set; }
         public DbSet<MovieActor> MovieActors { get; set ; }
-        public DbSet<MovieCustomer> MovieCustomers { get; set ; }
+        public DbSet<Customer> MovieCustomers { get; set; }
+        public DbSet<FavoriteMovie> FavoriteMovies { get; set; }
+        //public DbSet<MovieCustomer> MovieCustomers { get; set ; }
 
         public override int SaveChanges()
         {
