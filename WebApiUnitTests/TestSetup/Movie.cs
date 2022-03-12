@@ -8,12 +8,12 @@ using WebApi.Entity;
 
 namespace WebApiUnitTests.TestSetup
 {
-    public static partial class Movies
+    public static partial class Movie
     {
         public static void AddMovies(this MovieStoreDbContext context)
         {
             context.Movies.AddRange(
-                 new Movie
+                 new WebApi.Entity.Movie
                  {
                      MovieName = "Yüzüklerin Efendisi Yüzük Kardeşliği",
                      DirectorId = 1,
@@ -21,7 +21,7 @@ namespace WebApiUnitTests.TestSetup
                      MovieTypeId = 1,
                      Year = 2001,
                  },
-                 new Movie
+                 new WebApi.Entity.Movie
                  {
                      MovieName = "Yüzüklerin Efendisi İkiz Kuleler",
                      DirectorId = 1,
@@ -29,7 +29,7 @@ namespace WebApiUnitTests.TestSetup
                      MovieTypeId = 1,
                      Year = 2002,
                  },
-                new Movie
+                new WebApi.Entity.Movie
                 {
                     MovieName = "Yüzüklerin Efendisi Kralın Dönüşü",
                     DirectorId = 1,

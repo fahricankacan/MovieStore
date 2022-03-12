@@ -93,24 +93,29 @@ namespace WebApi.DbOperations
 
 
                context.Customers.AddRange(
-                    new Customer {Name="Fahrican",Surname= "Kaçan" },
-                    new Customer {Name="Feyza",Surname= "Kaçan" },
-                    new Customer {Name="Lethesu",Surname= "Twtich" }
+                    new Customer {Name="Fahrican",Surname= "Kaçan",Email="fahrican.kcn@gmail.com",Password="123456" },
+                    new Customer {Name="Feyza",Surname= "Kaçan", Email = "feyza.kcn@gmail.com", Password = "123456" },
+                    new Customer {Name="Lethesu",Surname= "Twtich", Email = "lethesu.kcn@gmail.com", Password = "123456" },
+                    new Customer {Name="test",Surname= "test", Email = "test@test.com", Password = "123456" }
                 );
 
                 context.OperationHistories.AddRange(
-                    new OperationHistory { CustomerId = 1, Price = 20, DateTime = DateTime.Now.AddDays(-2) },
-                    new OperationHistory { CustomerId = 1, Price = 20, DateTime = DateTime.Now.AddDays(-2) },
-                    new OperationHistory { CustomerId = 1, Price = 20, DateTime = DateTime.Now.AddDays(-2) },
-                    new OperationHistory { CustomerId = 3, Price = 40, DateTime = DateTime.Now.AddDays(-2) }
+                    new OperationHistory { CustomerId = 1, MovieId = 1, DateTime = DateTime.Now.AddDays(-2), },
+                    new OperationHistory { CustomerId = 1, MovieId = 2, DateTime = DateTime.Now.AddDays(-2) },
+                    new OperationHistory { CustomerId = 1, MovieId = 3, DateTime = DateTime.Now.AddDays(-2) },
+                    new OperationHistory { CustomerId = 3, MovieId = 2, DateTime = DateTime.Now.AddDays(-2) }
                     );
 
                 context.FavoriteMovies.AddRange(
                     new FavoriteMovie { MovieId = 1, CustomerId = 1 },
                     new FavoriteMovie { MovieId = 2, CustomerId = 1 },
                     new FavoriteMovie { MovieId = 3, CustomerId = 1 },
-                    new FavoriteMovie { MovieId = 1, CustomerId = 2 }
+                    new FavoriteMovie { MovieId = 1, CustomerId = 2 },
+                    new FavoriteMovie { MovieId = 1, CustomerId = 4 }
                     );
+
+
+
 
                 context.SaveChanges();
             }

@@ -12,7 +12,7 @@ namespace WebApi.DbOperations
         public DbSet<MovieType> MovieTypes { get; set; }
         public DbSet<OperationHistory> OperationHistories { get; set; }
         public DbSet<MovieActor> MovieActors { get; set; }
-        public DbSet<Customer> MovieCustomers { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<FavoriteMovie> FavoriteMovies { get; set; }
 
 

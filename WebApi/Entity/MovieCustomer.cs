@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApi.Entity
 {
-    //[Keyless]
+    
     //public class MovieCustomer
     //{
     //    public int MovieId { get; set; }

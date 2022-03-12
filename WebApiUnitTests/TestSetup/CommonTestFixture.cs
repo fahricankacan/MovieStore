@@ -28,6 +28,9 @@ namespace WebApiUnitTests.TestSetup
             Context.AddFavoriteMovies();
             Context.AddCustomers();
             Context.AddOperationHistories();
+            Context.AddMovies();
+            Context.AddMovieTypes();
+            Context.AddActors();
 
             Mapper = new MapperConfiguration(cfg => cfg.AddProfile<MapperProfiles>()).CreateMapper();
 

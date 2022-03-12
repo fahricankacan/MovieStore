@@ -10,7 +10,7 @@ namespace WebApiUnitTests.TestSetup
 {
     public static class MovieTypes
     {
-        public static void AddMovies(this MovieStoreDbContext context)
+        public static void AddMovieTypes(this MovieStoreDbContext context)
         {
             context.MovieTypes.AddRange(
                   new MovieType

@@ -28,7 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Movie\Command\" />
+    <Folder Include="Application\CustomerOperations\Queries\" />
+    <Folder Include="Application\MovieOperations\Command\Delete\" />
   </ItemGroup>
 
 </Project>

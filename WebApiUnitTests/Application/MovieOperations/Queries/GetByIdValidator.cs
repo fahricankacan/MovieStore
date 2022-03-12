@@ -10,29 +10,33 @@ using WebApi.DbOperations;
 using WebApiUnitTests.TestSetup;
 using Xunit;
 
-namespace WebApiUnitTests.Application.Movie.Queries
+namespace WebApiUnitTests.Application.MovieOperations.Queries
 {
-    public class GetById : IClassFixture<CommonTestFixture>
+    public class GetByIdValidator : IClassFixture<CommonTestFixture>
     {
         private readonly IMovieStoreDbContext _context;
         private readonly IMapper _mapper;
 
-        public GetById(CommonTestFixture commonTestFixture)
+        public GetByIdValidator(CommonTestFixture commonTestFixture)
         {
             _mapper = commonTestFixture.Mapper;
             _context = commonTestFixture.Context;
         }
 
 
-        [Fact]
-        public void WhenBookIdIsNotFount_Id_ShouldThrowException()
+        [Theory]
+        [InlineData(-1)]
+        [InlineData(0)]
+        public async void WhenIdIsNotGreaterThanZero_Id_ShouldThrowException(int id)
         {
             GetMoviesByIdQuery query = new GetMoviesByIdQuery(_context, _mapper);
-            query.MovieId = 543;
+            query.MovieId = id;
 
-            FluentActions
-                .Invoking(() => query.Query())
-                .Should().Throw<InvalidOperationException>().And.Message.Should().Be("Flim bulunamadı.");
+            GetMovieByIdQueryValidator validate = new();
+
+            var result =validate.Validate(query);
+
+            result.Errors.Count.Should().BeGreaterThan(0);
 
         }
     }

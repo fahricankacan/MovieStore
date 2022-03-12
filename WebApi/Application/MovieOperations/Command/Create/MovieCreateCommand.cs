@@ -23,7 +23,15 @@ namespace WebApi.Application.MovieOperations.Command.Create
 
         public void Handle()
         {
-            Movie movie = new Movie
+
+            var movie = _context.Movies.SingleOrDefault(p => p.MovieName == CreateModel.MovieName);
+
+            if(movie is not null)
+            {
+                throw new InvalidOperationException("Flim daha önce eklenmiş.");
+            }
+
+            movie = new Movie
             {
                 DirectorId = CreateModel.DirectorId,
                 IsActive = true,
@@ -33,6 +41,8 @@ namespace WebApi.Application.MovieOperations.Command.Create
                 Year = CreateModel.Year,
                 MovieActors = new List<MovieActor>()
             };
+
+            
 
             // var movie = _mapper.Map<Movie>(CreateModel);
 
