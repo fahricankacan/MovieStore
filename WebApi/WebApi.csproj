@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Application\DirectorOperations\Command\Add\" />
+    <Folder Include="Application\DirectorOperations\Query\" />
     <Folder Include="Application\MovieOperations\Query\NewFolder\" />
   </ItemGroup>
 

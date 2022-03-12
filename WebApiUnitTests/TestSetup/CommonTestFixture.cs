@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace WebApiUnitTests.TestSetup
     {
         public MovieStoreDbContext Context { get; set; }
         public IMapper Mapper { get; set; }
+        
 
         public CommonTestFixture()
         {
@@ -33,6 +35,7 @@ namespace WebApiUnitTests.TestSetup
             Context.AddActors();
 
             Mapper = new MapperConfiguration(cfg => cfg.AddProfile<MapperProfiles>()).CreateMapper();
+
 
         }
     }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApi.DbOperations;
 
-namespace WebApi.Application.CustomerOperations.Delete
+namespace WebApi.Application.CustomerOperations.Command.Delete
 {
     public class CustomerDeleteCommand
     {
@@ -34,4 +34,6 @@ namespace WebApi.Application.CustomerOperations.Delete
             _context.SaveChanges();
         }
     }
+ 
+
 }

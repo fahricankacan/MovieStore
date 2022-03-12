@@ -17,6 +17,9 @@ namespace WebApi.Entity
 
         public ICollection<MovieActor> MovieActors { get; set; }
 
-
+        internal object Include(Func<object, object> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

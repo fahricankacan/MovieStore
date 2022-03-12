@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApi.Entity;
+using static WebApi.Application.ActorOperations.Command.ActorCreateCommand;
 using static WebApi.Application.MovieOperations.Command.Create.MovieCreateCommandValidator;
 using static WebApi.Application.Queries.GetMovies.GetMoviesQuery;
 
@@ -25,8 +26,9 @@ namespace WebApi.Utilitys
             //    .ForMember(src => src.Year, opt => opt.MapFrom(x => x.Year))
             //    .ForMember(src => src.MovieTypeId, opt => opt.MapFrom(x => x.MovieTypeId))
             //    .ForMember(src => src.DirectorId, opt => opt.MapFrom(x => x.DirectorId));
-                //.ForMember(src => src.MovieActors, opt => new List<MovieActor());
-                
+            //.ForMember(src => src.MovieActors, opt => new List<MovieActor());
+
+            CreateMap<Actor, ActorCreateModel>();
                 
 
 
