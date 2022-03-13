@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -7,16 +8,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApi.Application.CustomerOperations.Command;
+using WebApi.Application.CustomerOperations.Command.Buy;
 using WebApi.Application.CustomerOperations.Command.CreateToken;
 using WebApi.Application.CustomerOperations.Command.Delete;
 using WebApi.Application.CustomerOperations.Command.RefreshToken;
 using WebApi.Application.CustomerOperations.Query.GetAll;
 using WebApi.DbOperations;
 using WebApi.TokenOperations.Models;
+using static WebApi.Application.CustomerOperations.Command.Buy.CustomerBuyCommand;
 using static WebApi.Application.CustomerOperations.Command.CustomerCreateCommand;
 
 namespace WebApi.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class CustomerController : ControllerBase
@@ -85,6 +89,31 @@ namespace WebApi.Controllers
             var resultToken = command.Handle();
             return resultToken;
 
+        }
+
+        [HttpPost("buy")]
+        public IActionResult BuyMovie([FromBody]BuyCommandModel model)
+        {
+            CustomerBuyCommand command = new(_context);
+
+            command.Model = model;
+           
+
+            command.Handle();
+
+            return Ok();
+        }
+
+        [Authorize(AuthenticationSchemes ="Bearer")]
+        [HttpPost("delete/movie")]
+        public IActionResult DeleteMovie([FromQuery] int OperationID)
+        {
+            DeleteBuyedMovieCommand command = new DeleteBuyedMovieCommand(_context);
+            command.OperationId = OperationID;
+
+            command.Handle();
+
+            return Ok();
         }
     }
 }

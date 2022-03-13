@@ -21,7 +21,10 @@ namespace WebApi.DbOperations
             modelBuilder.Entity<MovieActor>()
                 .HasOne(bc => bc.Actors)
                 .WithMany(c => c.MovieActors)
-                .HasForeignKey(bc => bc.ActorId);
+                .HasForeignKey(bc => bc.ActorId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            
 
             //       modelBuilder.Entity<MovieCustomer>()
             //.HasKey(bc => new { bc.MovieId, bc.CustomerId });

@@ -16,5 +16,7 @@ namespace WebApi.Entity
 
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
+
+        public bool Delete { get; set; } = false;
     }
 }

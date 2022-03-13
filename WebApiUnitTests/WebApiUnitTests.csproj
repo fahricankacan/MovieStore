@@ -28,10 +28,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Application\ActorOperations\Command\" />
+    <Folder Include="Application\ActorOperations\Query\" />
     <Folder Include="Application\CustomerOperations\Command\RefreshToken\" />
     <Folder Include="Application\CustomerOperations\Queries\" />
     <Folder Include="Application\MovieOperations\Command\Delete\" />
-    <Folder Include="Application\ActorOperations\" />
   </ItemGroup>
 
 </Project>
